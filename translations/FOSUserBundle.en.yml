@@ -1,0 +1,7 @@
+registration:
+    flash:
+        user_created: 'Test for translator 123.'
+
+security:
+    flash:
+        success: 'You logged in successfully!'
