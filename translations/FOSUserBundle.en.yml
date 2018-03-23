@@ -2,6 +2,10 @@ registration:
     flash:
         user_created: 'Test for translator 123.'
 
+# Global strings
+layout:
+    logged_in_as: '%username%'
+
 security:
     flash:
         success: 'You logged in successfully!'

@@ -4,7 +4,7 @@
 
 {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
     {{ form_widget(form) }}
-    <div>
+    <div class="offset-md-2">
         <input type="submit" value="{{ 'registration.submit'|trans }}" class="btn btn-primary" />
     </div>
 {{ form_end(form) }}

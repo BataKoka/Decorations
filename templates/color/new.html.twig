@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Color{% endblock %}
+
+{% block body %}
+    <h1>
+        Create new Color
+        <a href="{{ path('color_index') }}" class="btn btn-outline-info">back to list</a>
+    </h1>
+
+    {{ include('color/_form.html.twig') }}
+{% endblock %}
