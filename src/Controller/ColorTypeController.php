@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\ColorType;
-use App\Form\ColorType1Type;
+use App\Form\DropdownType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -32,7 +32,7 @@ class ColorTypeController extends Controller
     public function new(Request $request): Response
     {
         $colorType = new ColorType();
-        $form = $this->createForm(ColorType1Type::class, $colorType);
+        $form = $this->createForm(DropdownType::class, $colorType);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -49,20 +49,20 @@ class ColorTypeController extends Controller
         ]);
     }
 
-    /**
-     * @Route("/{id}", name="color_type_show", methods="GET")
-     */
-    public function show(ColorType $colorType): Response
-    {
-        return $this->render('color_type/show.html.twig', ['color_type' => $colorType]);
-    }
+//    /**
+//     * @Route("/{id}", name="color_type_show", methods="GET")
+//     */
+//    public function show(ColorType $colorType): Response
+//    {
+//        return $this->render('color_type/show.html.twig', ['color_type' => $colorType]);
+//    }
 
     /**
      * @Route("/{id}/edit", name="color_type_edit", methods="GET|POST")
      */
     public function edit(Request $request, ColorType $colorType): Response
     {
-        $form = $this->createForm(ColorType1Type::class, $colorType);
+        $form = $this->createForm(DropdownType::class, $colorType);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {

@@ -1,11 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New ColorType{% endblock %}
+{% block title %}New Color Type{% endblock %}
 
 {% block body %}
-    <h1>Create new ColorType</h1>
+    <h1>
+        Create new Color Type
+        <a href="{{ path('color_type_index') }}" class="btn btn-outline-info">back to list</a>
+    </h1>
 
     {{ include('color_type/_form.html.twig') }}
-
-    <a href="{{ path('color_type_index') }}">back to list</a>
 {% endblock %}

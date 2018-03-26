@@ -1,10 +1,18 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
-<h1 class="h3 mb-3 font-weight-normal">Register</h1>
+<div class="form-group row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-10">
+        <h1 class="h3 mb-3 font-weight-normal">Register</h1>
+    </div>
+</div>
 
-{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register', 'novalidate': 'novalidate'}}) }}
     {{ form_widget(form) }}
-    <div class="offset-md-2">
-        <input type="submit" value="{{ 'registration.submit'|trans }}" class="btn btn-primary" />
+    <div class="form-group row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-10">
+            <input type="submit" value="{{ 'registration.submit'|trans }}" class="btn btn-primary" />
+        </div>
     </div>
 {{ form_end(form) }}

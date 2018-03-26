@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Shape{% endblock %}
+
+{% block body %}
+    <h1>
+        Create new Shape
+        <a href="{{ path('shape_index') }}" class="btn btn-outline-info">back to list</a>
+    </h1>
+
+    {{ include('shape/_form.html.twig') }}
+{% endblock %}

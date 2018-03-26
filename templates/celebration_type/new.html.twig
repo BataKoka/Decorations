@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Celebration Type{% endblock %}
+
+{% block body %}
+    <h1>
+        Create new Celebration Type
+        <a href="{{ path('celebration_type_index') }}" class="btn btn-outline-info">back to list</a>
+    </h1>
+
+    {{ include('celebration_type/_form.html.twig') }}
+{% endblock %}

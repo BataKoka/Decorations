@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Print Type{% endblock %}
+
+{% block body %}
+    <h1>
+        Create new Print Type
+        <a href="{{ path('print_type_index') }}" class="btn btn-outline-info">back to list</a>
+    </h1>
+
+    {{ include('print_type/_form.html.twig') }}
+{% endblock %}

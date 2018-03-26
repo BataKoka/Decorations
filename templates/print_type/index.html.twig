@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Print Type index{% endblock %}
+
+{% block body %}
+    <h1>
+        Print Type index
+        <a href="{{ path('print_type_new') }}" class="btn btn-success">Create new</a>
+    </h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Active?</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for print_type in print_types %}
+            <tr>
+                <td>{{ print_type.name }}</td>
+                <td>{{ print_type.isActive ? 'Yes' : 'No' }}</td>
+                <td>
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        {#<a href="{{ path('print_type_show', {'id': print_type.id}) }}">show</a>#}
+                        <a href="{{ path('print_type_edit', {'id': print_type.id}) }}" class="btn btn-primary">Edit</a>
+                        {{ include('print_type/_delete_form.html.twig') }}
+                    </div>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

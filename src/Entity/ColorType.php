@@ -3,11 +3,14 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ColorTypeRepository")
  * @ORM\Entity
  * @ORM\Table(name="color_types")
+ * @UniqueEntity("name")
  */
 class ColorType
 {
@@ -21,6 +24,8 @@ class ColorType
     // add your own fields
 
     /**
+     * @Assert\NotBlank()
+     * @Assert\Length(min="2")
      * @ORM\Column(type="string", unique=true)
      */
     private $name;

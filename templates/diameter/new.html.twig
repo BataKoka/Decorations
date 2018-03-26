@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Diameter{% endblock %}
+
+{% block body %}
+    <h1>
+        Create new Diameter
+        <a href="{{ path('diameter_index') }}" class="btn btn-outline-info">back to list</a>
+    </h1>
+
+    {{ include('diameter/_form.html.twig') }}
+{% endblock %}

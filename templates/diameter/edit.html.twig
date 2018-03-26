@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Diameter{% endblock %}
+
+{% block body %}
+    <h1>
+        Edit Diameter: {{ diameter.name }}
+        <a href="{{ path('diameter_index') }}" class="btn btn-outline-info">back to list</a>
+    </h1>
+
+    {{ include('diameter/_form.html.twig', {'button_label': 'Update'}) }}
+
+    {#{{ include('diameter/_delete_form.html.twig') }}#}
+{% endblock %}

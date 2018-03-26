@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Material index{% endblock %}
+
+{% block body %}
+    <h1>
+        Material index
+        <a href="{{ path('material_new') }}" class="btn btn-success">Create new</a>
+    </h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Active?</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for material in materials %}
+            <tr>
+                <td>{{ material.name }}</td>
+                <td>{{ material.isActive ? 'Yes' : 'No' }}</td>
+                <td>
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        {#<a href="{{ path('material_show', {'id': material.id}) }}">show</a>#}
+                        <a href="{{ path('material_edit', {'id': material.id}) }}" class="btn btn-primary">Edit</a>
+                        {{ include('material/_delete_form.html.twig') }}
+                    </div>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

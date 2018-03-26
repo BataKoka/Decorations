@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Color;
-use App\Form\ColorType;
+use App\Form\DropdownType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -32,7 +32,7 @@ class ColorController extends Controller
     public function new(Request $request): Response
     {
         $color = new Color();
-        $form = $this->createForm(ColorType::class, $color);
+        $form = $this->createForm(DropdownType::class, $color);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -62,7 +62,7 @@ class ColorController extends Controller
      */
     public function edit(Request $request, Color $color): Response
     {
-        $form = $this->createForm(ColorType::class, $color);
+        $form = $this->createForm(DropdownType::class, $color);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
