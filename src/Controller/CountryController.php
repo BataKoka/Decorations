@@ -40,6 +40,8 @@ class CountryController extends Controller
             $em->persist($country);
             $em->flush();
 
+            $this->addFlash('success', '<strong>Success!</strong> Item has been added successfully');
+
             return $this->redirectToRoute('country_index');
         }
 
@@ -68,7 +70,10 @@ class CountryController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('country_edit', ['id' => $country->getId()]);
+            $this->addFlash('success', '<strong>Success!</strong> Item has been edited successfully');
+
+//            return $this->redirectToRoute('country_edit', ['id' => $country->getId()]);
+            return $this->redirectToRoute('country_index');
         }
 
         return $this->render('country/edit.html.twig', [
@@ -89,6 +94,8 @@ class CountryController extends Controller
         $em = $this->getDoctrine()->getManager();
         $em->remove($country);
         $em->flush();
+
+        $this->addFlash('success', '<strong>Success!</strong> Item has been deleted successfully');
 
         return $this->redirectToRoute('country_index');
     }

@@ -40,6 +40,8 @@ class MaterialController extends Controller
             $em->persist($material);
             $em->flush();
 
+            $this->addFlash('success', '<strong>Success!</strong> Item has been added successfully');
+
             return $this->redirectToRoute('material_index');
         }
 
@@ -68,7 +70,10 @@ class MaterialController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('material_edit', ['id' => $material->getId()]);
+            $this->addFlash('success', '<strong>Success!</strong> Item has been edited successfully');
+
+//            return $this->redirectToRoute('material_edit', ['id' => $material->getId()]);
+            return $this->redirectToRoute('material_index');
         }
 
         return $this->render('material/edit.html.twig', [
@@ -89,6 +94,8 @@ class MaterialController extends Controller
         $em = $this->getDoctrine()->getManager();
         $em->remove($material);
         $em->flush();
+
+        $this->addFlash('success', '<strong>Success!</strong> Item has been deleted successfully');
 
         return $this->redirectToRoute('material_index');
     }

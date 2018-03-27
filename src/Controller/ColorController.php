@@ -40,6 +40,8 @@ class ColorController extends Controller
             $em->persist($color);
             $em->flush();
 
+            $this->addFlash('success', '<strong>Success!</strong> Item has been added successfully');
+
             return $this->redirectToRoute('color_index');
         }
 
@@ -68,7 +70,10 @@ class ColorController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('color_edit', ['id' => $color->getId()]);
+            $this->addFlash('success', '<strong>Success!</strong> Item has been edited successfully');
+
+//            return $this->redirectToRoute('color_edit', ['id' => $color->getId()]);
+            return $this->redirectToRoute('color_index');
         }
 
         return $this->render('color/edit.html.twig', [
@@ -89,6 +94,8 @@ class ColorController extends Controller
         $em = $this->getDoctrine()->getManager();
         $em->remove($color);
         $em->flush();
+
+        $this->addFlash('success', '<strong>Success!</strong> Item has been deleted successfully');
 
         return $this->redirectToRoute('color_index');
     }

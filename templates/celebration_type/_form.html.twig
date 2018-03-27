@@ -1,4 +1,12 @@
 {{ form_start(form) }}
     {{ form_widget(form) }}
-    <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
+    <div class="form-group row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+            <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
+        </div>
+        <div class="col-sm-2">
+            <a href="{{ path('celebration_type_index') }}" class="btn btn-outline-info">back to list</a>
+        </div>
+    </div>
 {{ form_end(form) }}

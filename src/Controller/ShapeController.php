@@ -40,6 +40,8 @@ class ShapeController extends Controller
             $em->persist($shape);
             $em->flush();
 
+            $this->addFlash('success', '<strong>Success!</strong> Item has been added successfully');
+
             return $this->redirectToRoute('shape_index');
         }
 
@@ -68,7 +70,10 @@ class ShapeController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('shape_edit', ['id' => $shape->getId()]);
+            $this->addFlash('success', '<strong>Success!</strong> Item has been edited successfully');
+
+//            return $this->redirectToRoute('shape_edit', ['id' => $shape->getId()]);
+            return $this->redirectToRoute('shape_index');
         }
 
         return $this->render('shape/edit.html.twig', [
@@ -89,6 +94,8 @@ class ShapeController extends Controller
         $em = $this->getDoctrine()->getManager();
         $em->remove($shape);
         $em->flush();
+
+        $this->addFlash('success', '<strong>Success!</strong> Item has been deleted successfully');
 
         return $this->redirectToRoute('shape_index');
     }

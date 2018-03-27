@@ -40,6 +40,8 @@ class CelebrationTypeController extends Controller
             $em->persist($celebrationType);
             $em->flush();
 
+            $this->addFlash('success', '<strong>Success!</strong> Item has been added successfully');
+
             return $this->redirectToRoute('celebration_type_index');
         }
 
@@ -68,7 +70,10 @@ class CelebrationTypeController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('celebration_type_edit', ['id' => $celebrationType->getId()]);
+            $this->addFlash('success', '<strong>Success!</strong> Item has been edited successfully');
+
+//            return $this->redirectToRoute('celebration_type_edit', ['id' => $celebrationType->getId()]);
+            return $this->redirectToRoute('celebration_type_index');
         }
 
         return $this->render('celebration_type/edit.html.twig', [
@@ -89,6 +94,8 @@ class CelebrationTypeController extends Controller
         $em = $this->getDoctrine()->getManager();
         $em->remove($celebrationType);
         $em->flush();
+
+        $this->addFlash('success', '<strong>Success!</strong> Item has been deleted successfully');
 
         return $this->redirectToRoute('celebration_type_index');
     }

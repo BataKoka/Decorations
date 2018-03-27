@@ -3,10 +3,14 @@
 {% block title %}Diameter index{% endblock %}
 
 {% block body %}
-    <h1>
-        Diameter index
-        <a href="{{ path('diameter_new') }}" class="btn btn-success">Create new</a>
-    </h1>
+    <div class="form-group row">
+        <div class="col-sm-7">
+            <h1 class="h3 mb-3 font-weight-normal">Diameter index</h1>
+        </div>
+        <div class="col-sm-1">
+            <a href="{{ path('diameter_new') }}" class="btn btn-success">Create new</a>
+        </div>
+    </div>
 
     <table class="table">
         <thead>

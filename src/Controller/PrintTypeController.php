@@ -40,6 +40,8 @@ class PrintTypeController extends Controller
             $em->persist($printType);
             $em->flush();
 
+            $this->addFlash('success', '<strong>Success!</strong> Item has been added successfully');
+
             return $this->redirectToRoute('print_type_index');
         }
 
@@ -68,7 +70,10 @@ class PrintTypeController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('print_type_edit', ['id' => $printType->getId()]);
+            $this->addFlash('success', '<strong>Success!</strong> Item has been edited successfully');
+
+//            return $this->redirectToRoute('print_type_edit', ['id' => $printType->getId()]);
+            return $this->redirectToRoute('print_type_index');
         }
 
         return $this->render('print_type/edit.html.twig', [
@@ -89,6 +94,8 @@ class PrintTypeController extends Controller
         $em = $this->getDoctrine()->getManager();
         $em->remove($printType);
         $em->flush();
+
+        $this->addFlash('success', '<strong>Success!</strong> Item has been deleted successfully');
 
         return $this->redirectToRoute('print_type_index');
     }

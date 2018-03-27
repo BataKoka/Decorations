@@ -40,6 +40,8 @@ class LocationTypeController extends Controller
             $em->persist($locationType);
             $em->flush();
 
+            $this->addFlash('success', '<strong>Success!</strong> Item has been added successfully');
+
             return $this->redirectToRoute('location_type_index');
         }
 
@@ -68,7 +70,10 @@ class LocationTypeController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('location_type_edit', ['id' => $locationType->getId()]);
+            $this->addFlash('success', '<strong>Success!</strong> Item has been edited successfully');
+
+//            return $this->redirectToRoute('location_type_edit', ['id' => $locationType->getId()]);
+            return $this->redirectToRoute('location_type_index');
         }
 
         return $this->render('location_type/edit.html.twig', [
@@ -89,6 +94,8 @@ class LocationTypeController extends Controller
         $em = $this->getDoctrine()->getManager();
         $em->remove($locationType);
         $em->flush();
+
+        $this->addFlash('success', '<strong>Success!</strong> Item has been deleted successfully');
 
         return $this->redirectToRoute('location_type_index');
     }

@@ -3,10 +3,12 @@
 {% block title %}New Celebration Type{% endblock %}
 
 {% block body %}
-    <h1>
-        Create new Celebration Type
-        <a href="{{ path('celebration_type_index') }}" class="btn btn-outline-info">back to list</a>
-    </h1>
+    <div class="form-group row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-10">
+            <h1 class="h3 mb-3 font-weight-normal">Create new Celebration Type</h1>
+        </div>
+    </div>
 
     {{ include('celebration_type/_form.html.twig') }}
 {% endblock %}

@@ -40,6 +40,8 @@ class ColorTypeController extends Controller
             $em->persist($colorType);
             $em->flush();
 
+            $this->addFlash('success', '<strong>Success!</strong> Item has been added successfully');
+
             return $this->redirectToRoute('color_type_index');
         }
 
@@ -68,7 +70,10 @@ class ColorTypeController extends Controller
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('color_type_edit', ['id' => $colorType->getId()]);
+            $this->addFlash('success', '<strong>Success!</strong> Item has been edited successfully');
+
+//            return $this->redirectToRoute('color_type_edit', ['id' => $colorType->getId()]);
+            return $this->redirectToRoute('color_type_index');
         }
 
         return $this->render('color_type/edit.html.twig', [
@@ -89,6 +94,8 @@ class ColorTypeController extends Controller
         $em = $this->getDoctrine()->getManager();
         $em->remove($colorType);
         $em->flush();
+
+        $this->addFlash('success', '<strong>Success!</strong> Item has been deleted successfully');
 
         return $this->redirectToRoute('color_type_index');
     }

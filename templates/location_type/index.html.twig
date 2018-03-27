@@ -3,10 +3,14 @@
 {% block title %}Location Type index{% endblock %}
 
 {% block body %}
-    <h1>
-        Location Type index
-        <a href="{{ path('location_type_new') }}" class="btn btn-success">Create new</a>
-    </h1>
+    <div class="form-group row">
+        <div class="col-sm-7">
+            <h1 class="h3 mb-3 font-weight-normal">Location Type index</h1>
+        </div>
+        <div class="col-sm-1">
+            <a href="{{ path('location_type_new') }}" class="btn btn-success">Create new</a>
+        </div>
+    </div>
 
     <table class="table">
         <thead>

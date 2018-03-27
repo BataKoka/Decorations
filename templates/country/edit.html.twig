@@ -3,10 +3,12 @@
 {% block title %}Edit Country{% endblock %}
 
 {% block body %}
-    <h1>
-        Edit Country: {{ country.name }}
-        <a href="{{ path('country_index') }}" class="btn btn-outline-info">back to list</a>
-    </h1>
+    <div class="form-group row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-10">
+            <h1 class="h3 mb-3 font-weight-normal">Edit Country: {{ country.name }}</h1>
+        </div>
+    </div>
 
     {{ include('country/_form.html.twig', {'button_label': 'Update'}) }}
 
