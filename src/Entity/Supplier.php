@@ -9,12 +9,12 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\ShapeRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\SupplierRepository")
  * @ORM\Entity
- * @ORM\Table(name="shapes")
+ * @ORM\Table(name="suppliers")
  * @UniqueEntity("name")
  */
-class Shape
+class Supplier
 {
     /**
      * @ORM\Id()
@@ -38,7 +38,13 @@ class Shape
     private $isActive = true;
 
     /**
-     * @ORM\OneToMany(targetEntity="Balloon", mappedBy="shape")
+     * @Assert\NotBlank()
+     * @ORM\ManyToOne(targetEntity="Country", inversedBy="suppliers")
+     */
+    private $country;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Balloon", mappedBy="supplier")
      */
     private $balloons;
 
@@ -90,6 +96,22 @@ class Shape
         $this->isActive = $isActive;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getCountry(): ?Country
+    {
+        return $this->country;
+    }
+
+    /**
+     * @param mixed $country
+     */
+    public function setCountry(Country $country = null)
+    {
+        $this->country = $country;
+    }
+
     public function __toString()
     {
         return (string) $this->getName();
@@ -111,13 +133,13 @@ class Shape
 
         $this->balloons[] = $balloon;
         // set the *owning* side!
-        $balloon->setShape($this);
+        $balloon->setSupplier($this);
     }
 
     public function removeBalloon(Balloon $balloon)
     {
         $this->balloons->removeElement($balloon);
         // set the owning side to null
-        $balloon->setShape(null);
+        $balloon->setSupplier(null);
     }
 }

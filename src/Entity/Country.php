@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -34,6 +36,19 @@ class Country
      * @ORM\Column(type="boolean", options={"default":true})
      */
     private $isActive = true;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Supplier", mappedBy="country")
+     */
+    private $suppliers;
+
+    /**
+     * Country constructor.
+     */
+    public function __construct()
+    {
+        $this->suppliers = new ArrayCollection();
+    }
 
     /**
      * @return mixed
@@ -78,5 +93,31 @@ class Country
     public function __toString()
     {
         return (string) $this->getName();
+    }
+
+    /**
+     * @return Collection|Supplier[]
+     */
+    public function getSuppliers()
+    {
+        return $this->suppliers;
+    }
+
+    public function addSupplier(Supplier $supplier)
+    {
+        if ($this->suppliers->contains($supplier)) {
+            return;
+        }
+
+        $this->suppliers[] = $supplier;
+        // set the *owning* side!
+        $supplier->setCountry($this);
+    }
+
+    public function removeSupplier(Supplier $supplier)
+    {
+        $this->suppliers->removeElement($supplier);
+        // set the owning side to null
+        $supplier->setCountry(null);
     }
 }

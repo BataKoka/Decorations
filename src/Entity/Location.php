@@ -2,19 +2,17 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\ShapeRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\LocationRepository")
  * @ORM\Entity
- * @ORM\Table(name="shapes")
+ * @ORM\Table(name="locations")
  * @UniqueEntity("name")
  */
-class Shape
+class Location
 {
     /**
      * @ORM\Id()
@@ -33,22 +31,22 @@ class Shape
     private $name;
 
     /**
+     * @Assert\Type("integer")
+     * @Assert\Range(min="0", max="100")
+     * @ORM\Column(type="integer", options={"unsigned":true, "default":0})
+     */
+    private $percentage = 0;
+
+    /**
      * @ORM\Column(type="boolean", options={"default":true})
      */
     private $isActive = true;
 
     /**
-     * @ORM\OneToMany(targetEntity="Balloon", mappedBy="shape")
+     * @Assert\NotBlank()
+     * @ORM\ManyToOne(targetEntity="LocationType", inversedBy="locations")
      */
-    private $balloons;
-
-    /**
-     * Color constructor.
-     */
-    public function __construct()
-    {
-        $this->balloons = new ArrayCollection();
-    }
+    private $locationType;
 
     /**
      * @return mixed
@@ -77,6 +75,22 @@ class Shape
     /**
      * @return mixed
      */
+    public function getPercentage()
+    {
+        return $this->percentage;
+    }
+
+    /**
+     * @param mixed $percentage
+     */
+    public function setPercentage($percentage)
+    {
+        $this->percentage = $percentage;
+    }
+
+    /**
+     * @return mixed
+     */
     public function getIsActive()
     {
         return $this->isActive;
@@ -90,34 +104,24 @@ class Shape
         $this->isActive = $isActive;
     }
 
-    public function __toString()
+    /**
+     * @return mixed
+     */
+    public function getLocationType(): ?LocationType
     {
-        return (string) $this->getName();
+        return $this->locationType;
     }
 
     /**
-     * @return Collection|Balloon[]
+     * @param mixed $locationType
      */
-    public function getBalloons()
+    public function setLocationType(LocationType $locationType = null)
     {
-        return $this->balloons;
+        $this->locationType = $locationType;
     }
 
-    public function addBalloon(Balloon $balloon)
+    public function __toString()
     {
-        if ($this->balloons->contains($balloon)) {
-            return;
-        }
-
-        $this->balloons[] = $balloon;
-        // set the *owning* side!
-        $balloon->setShape($this);
-    }
-
-    public function removeBalloon(Balloon $balloon)
-    {
-        $this->balloons->removeElement($balloon);
-        // set the owning side to null
-        $balloon->setShape(null);
+        return (string) $this->getName();
     }
 }
