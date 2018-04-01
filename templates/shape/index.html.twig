@@ -15,17 +15,17 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Name</th>
                 <th>Active?</th>
-                <th>Actions</th>
+                <th>Name</th>
+                <th class="text-center">Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for shape in shapes %}
             <tr>
+                <td>{{ shape.isActive ? '<span class="badge badge-success">Yes</span>' : '<span class="badge badge-danger">No</span>' }}</td>
                 <td>{{ shape.name }}</td>
-                <td>{{ shape.isActive ? 'Yes' : 'No' }}</td>
-                <td>
+                <td class="text-center">
                     <div class="btn-group" role="group" aria-label="Basic example">
                         {#<a href="{{ path('shape_show', {'id': shape.id}) }}">show</a>#}
                         <a href="{{ path('shape_edit', {'id': shape.id}) }}" class="btn btn-primary">Edit</a>
@@ -35,7 +35,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="4">no records found</td>
+                <td colspan="3">no records found</td>
             </tr>
         {% endfor %}
         </tbody>

@@ -15,17 +15,17 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Name</th>
                 <th>Active?</th>
-                <th>Actions</th>
+                <th>Name</th>
+                <th class="text-center">Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for print_type in print_types %}
             <tr>
+                <td>{{ print_type.isActive ? '<span class="badge badge-success">Yes</span>' : '<span class="badge badge-danger">No</span>' }}</td>
                 <td>{{ print_type.name }}</td>
-                <td>{{ print_type.isActive ? 'Yes' : 'No' }}</td>
-                <td>
+                <td class="text-center">
                     <div class="btn-group" role="group" aria-label="Basic example">
                         {#<a href="{{ path('print_type_show', {'id': print_type.id}) }}">show</a>#}
                         <a href="{{ path('print_type_edit', {'id': print_type.id}) }}" class="btn btn-primary">Edit</a>
@@ -35,7 +35,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="4">no records found</td>
+                <td colspan="3">no records found</td>
             </tr>
         {% endfor %}
         </tbody>

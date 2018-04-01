@@ -15,17 +15,17 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Name</th>
                 <th>Active?</th>
-                <th>Actions</th>
+                <th>Name</th>
+                <th class="text-center">Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for color in colors %}
             <tr>
+                <td>{{ color.isActive ? '<span class="badge badge-success">Yes</span>' : '<span class="badge badge-danger">No</span>' }}</td>
                 <td>{{ color.name }}</td>
-                <td>{{ color.isActive ? 'Yes' : 'No' }}</td>
-                <td>
+                <td class="text-center">
                     <div class="btn-group" role="group" aria-label="Basic example">
                         {#<a href="{{ path('color_show', {'id': color.id}) }}">show</a>#}
                         <a href="{{ path('color_edit', {'id': color.id}) }}" class="btn btn-primary">Edit</a>
@@ -35,7 +35,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="4">no records found</td>
+                <td colspan="3">no records found</td>
             </tr>
         {% endfor %}
         </tbody>

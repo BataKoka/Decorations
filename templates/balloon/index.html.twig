@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Balloon index{% endblock %}
+
+{% block body %}
+    <div class="form-group row">
+        <div class="col-sm-7">
+            <h1 class="h3 mb-3 font-weight-normal">Balloon index</h1>
+        </div>
+        <div class="col-sm-1">
+            <a href="{{ path('balloon_new') }}" class="btn btn-success">Create new</a>
+        </div>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Active?</th>
+                <th>Name</th>
+                <th>Color</th>
+                <th>Color type</th>
+                <th>Diameter</th>
+                <th>Material</th>
+                <th>Print type</th>
+                <th>Shape</th>
+                <th>Supplier</th>
+                <th>Price</th>
+                <th class="text-center">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for balloon in balloons %}
+            <tr>
+                <td>{{ balloon.isActive ? '<span class="badge badge-success">Yes</span>' : '<span class="badge badge-danger">No</span>' }}</td>
+                <td>{{ balloon.name }}</td>
+                <td>{{ balloon.color.name }}</td>
+                <td>{{ balloon.colorType.name }}</td>
+                <td>{{ balloon.diameter.name }}</td>
+                <td>{{ balloon.material.name }}</td>
+                <td>{{ balloon.printType.name }}</td>
+                <td>{{ balloon.shape.name }}</td>
+                <td>{{ balloon.supplier.name }}</td>
+                <td>{{ balloon.price }}</td>
+                <td class="text-center">
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        {#<a href="{{ path('balloon_show', {'id': balloon.id}) }}">show</a>#}
+                        <a href="{{ path('balloon_edit', {'id': balloon.id}) }}" class="btn btn-primary">Edit</a>
+                        {{ include('balloon/_delete_form.html.twig') }}
+                    </div>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

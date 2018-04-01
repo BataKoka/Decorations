@@ -38,7 +38,7 @@ class Balloon
     /**
      * @Assert\NotBlank()
      * @Assert\Type("numeric")
-     * @Assert\Range(min="0.1")
+     * @Assert\Range(min="0.1", max="999999.99")
      * @ORM\Column(type="decimal", precision=8, scale=2)
      */
     private $price;

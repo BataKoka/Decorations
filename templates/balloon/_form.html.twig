@@ -1,0 +1,21 @@
+{{ form_start(form) }}
+    {{ form_row(form.name) }}
+    {{ form_row(form.color) }}
+    {{ form_row(form.colorType) }}
+    {{ form_row(form.diameter) }}
+    {{ form_row(form.material) }}
+    {{ form_row(form.printType) }}
+    {{ form_row(form.shape) }}
+    {{ form_row(form.supplier) }}
+    {{ form_row(form.price) }}
+    {{ form_row(form.isActive) }}
+    <div class="form-group row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+            <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
+        </div>
+        <div class="col-sm-2">
+            <a href="{{ path('balloon_index') }}" class="btn btn-outline-info">back to list</a>
+        </div>
+    </div>
+{{ form_end(form) }}

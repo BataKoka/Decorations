@@ -15,17 +15,17 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Name</th>
                 <th>Active?</th>
-                <th>Actions</th>
+                <th>Name</th>
+                <th class="text-center">Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for country in countries %}
             <tr>
+                <td>{{ country.isActive ? '<span class="badge badge-success">Yes</span>' : '<span class="badge badge-danger">No</span>' }}</td>
                 <td>{{ country.name }}</td>
-                <td>{{ country.isActive ? 'Yes' : 'No' }}</td>
-                <td>
+                <td class="text-center">
                     <div class="btn-group" role="group" aria-label="Basic example">
                         {#<a href="{{ path('country_show', {'id': country.id}) }}">show</a>#}
                         <a href="{{ path('country_edit', {'id': country.id}) }}" class="btn btn-primary">Edit</a>
@@ -35,7 +35,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="4">no records found</td>
+                <td colspan="3">no records found</td>
             </tr>
         {% endfor %}
         </tbody>

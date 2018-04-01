@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Location index{% endblock %}
+
+{% block body %}
+    <div class="form-group row">
+        <div class="col-sm-7">
+            <h1 class="h3 mb-3 font-weight-normal">Location index</h1>
+        </div>
+        <div class="col-sm-1">
+            <a href="{{ path('location_new') }}" class="btn btn-success">Create new</a>
+        </div>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Active?</th>
+                <th>Name</th>
+                <th>Type</th>
+                <th>Percentage</th>
+                <th class="text-center">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for location in locations %}
+            <tr>
+                <td>{{ location.isActive ? '<span class="badge badge-success">Yes</span>' : '<span class="badge badge-danger">No</span>' }}</td>
+                <td>{{ location.name }}</td>
+                <td>{{ location.locationType.name }}</td>
+                <td>{{ location.percentage }} %</td>
+                <td class="text-center">
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                        {#<a href="{{ path('location_show', {'id': location.id}) }}">show</a>#}
+                        <a href="{{ path('location_edit', {'id': location.id}) }}" class="btn btn-primary">Edit</a>
+                        {{ include('location/_delete_form.html.twig') }}
+                    </div>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
