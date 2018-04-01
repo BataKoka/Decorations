@@ -2,23 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="266413b7-9eb8-43fe-95cf-30519601512d" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/66044ca7-7bec-4a60-a2f2-87f513352087/_metadata_/metadata" afterPath="$PROJECT_DIR$/.idea/dataSources/66044ca7-7bec-4a60-a2f2-87f513352087/_metadata_/metadata" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dataSources/66044ca7-7bec-4a60-a2f2-87f513352087/_metadata_/metadata.values.at" afterPath="$PROJECT_DIR$/.idea/dataSources/66044ca7-7bec-4a60-a2f2-87f513352087/_metadata_/metadata.values.at" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Entity/Balloon.php" afterPath="$PROJECT_DIR$/src/Entity/Balloon.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/Form/DropdownType.php" afterPath="$PROJECT_DIR$/src/Form/DropdownType.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/bundles/FOSUserBundle/Registration/register_content.html.twig" afterPath="$PROJECT_DIR$/templates/bundles/FOSUserBundle/Registration/register_content.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/celebration_type/index.html.twig" afterPath="$PROJECT_DIR$/templates/celebration_type/index.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/color/index.html.twig" afterPath="$PROJECT_DIR$/templates/color/index.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/color_type/index.html.twig" afterPath="$PROJECT_DIR$/templates/color_type/index.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/country/index.html.twig" afterPath="$PROJECT_DIR$/templates/country/index.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/diameter/index.html.twig" afterPath="$PROJECT_DIR$/templates/diameter/index.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/location_type/index.html.twig" afterPath="$PROJECT_DIR$/templates/location_type/index.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/material/_form.html.twig" afterPath="$PROJECT_DIR$/templates/material/_form.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/material/index.html.twig" afterPath="$PROJECT_DIR$/templates/material/index.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/print_type/index.html.twig" afterPath="$PROJECT_DIR$/templates/print_type/index.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/shape/index.html.twig" afterPath="$PROJECT_DIR$/templates/shape/index.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/top-navbar.html.twig" afterPath="$PROJECT_DIR$/templates/top-navbar.html.twig" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -83,11 +68,21 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Balloon.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Balloon.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Entity/Balloon.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="595">
               <caret line="40" column="44" lean-forward="false" selection-start-line="40" selection-start-column="44" selection-end-line="40" selection-end-column="44" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="425">
+              <caret line="25" column="16" lean-forward="true" selection-start-line="25" selection-start-column="16" selection-end-line="25" selection-end-column="16" />
               <folding />
             </state>
           </provider>
@@ -121,7 +116,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/Controller/MaterialController.php" />
         <option value="$PROJECT_DIR$/src/Controller/PrintTypeController.php" />
         <option value="$PROJECT_DIR$/src/Controller/ShapeController.php" />
         <option value="$PROJECT_DIR$/src/Entity/LocationType.php" />
@@ -172,6 +166,7 @@
         <option value="$PROJECT_DIR$/src/Entity/Balloon.php" />
         <option value="$PROJECT_DIR$/templates/material/_form.html.twig" />
         <option value="$PROJECT_DIR$/templates/bundles/FOSUserBundle/Registration/register_content.html.twig" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -429,12 +424,12 @@
       <workItem from="1522328236174" duration="7773000" />
       <workItem from="1522363770548" duration="5683000" />
       <workItem from="1522498113651" duration="10417000" />
-      <workItem from="1522585157011" duration="13305000" />
+      <workItem from="1522585157011" duration="16255000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="199868000" />
+    <option name="totallyTimeSpent" value="202818000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -446,17 +441,17 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="140" y="20" width="1400" height="980" extended-state="0" />
-    <editor active="false" />
+    <frame x="140" y="20" width="1400" height="980" extended-state="1" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30895522" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30895522" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293979" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293979" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32910448" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293979" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293979" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3293979" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -518,18 +513,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="dbDummy://dbtable:/a99f0996/66044ca7-7bec-4a60-a2f2-87f513352087/baloni.public.location_types">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="dbDummy://dbtable:/a99f0996/66044ca7-7bec-4a60-a2f2-87f513352087/baloni.public.locations">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
@@ -986,6 +969,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="595">
           <caret line="40" column="44" lean-forward="false" selection-start-line="40" selection-start-column="44" selection-end-line="40" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="16" lean-forward="true" selection-start-line="25" selection-start-column="16" selection-end-line="25" selection-end-column="16" />
           <folding />
         </state>
       </provider>
