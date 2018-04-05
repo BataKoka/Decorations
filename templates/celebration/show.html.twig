@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Celebration{% endblock %}
+
+{% block body %}
+    <h1>Celebration</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ celebration.id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ celebration.name }}</td>
+            </tr>
+            <tr>
+                <th>IsActive</th>
+                <td>{{ celebration.isActive ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>LocationPercentage</th>
+                <td>{{ celebration.locationPercentage }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ celebration.date ? celebration.date|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Revenue</th>
+                <td>{{ celebration.revenue }}</td>
+            </tr>
+            <tr>
+                <th>WorkerExpense</th>
+                <td>{{ celebration.workerExpense }}</td>
+            </tr>
+            <tr>
+                <th>TransportExpense</th>
+                <td>{{ celebration.transportExpense }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('celebration_index') }}">back to list</a>
+
+    <a href="{{ path('celebration_edit', {'id': celebration.id}) }}">edit</a>
+
+    {{ include('celebration/_delete_form.html.twig') }}
+{% endblock %}

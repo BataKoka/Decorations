@@ -1,0 +1,20 @@
+{{ form_start(form) }}
+    {{ form_row(form.name) }}
+    {{ form_row(form.celebrationType) }}
+    {{ form_row(form.location) }}
+    {{ form_row(form.locationPercentage) }}
+    {{ form_row(form.date) }}
+    {{ form_row(form.revenue) }}
+    {{ form_row(form.workerExpense) }}
+    {{ form_row(form.transportExpense) }}
+    {{ form_row(form.isActive) }}
+    <div class="form-group row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+            <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
+        </div>
+        <div class="col-sm-2">
+            <a href="{{ path('celebration_index') }}" class="btn btn-outline-info">back to list</a>
+        </div>
+    </div>
+{{ form_end(form) }}

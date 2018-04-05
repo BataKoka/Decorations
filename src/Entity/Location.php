@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -47,6 +49,19 @@ class Location
      * @ORM\ManyToOne(targetEntity="LocationType", inversedBy="locations")
      */
     private $locationType;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Celebration", mappedBy="location")
+     */
+    private $celebrations;
+
+    /**
+     * Location constructor.
+     */
+    public function __construct()
+    {
+        $this->celebrations = new ArrayCollection();
+    }
 
     /**
      * @return mixed
@@ -123,5 +138,31 @@ class Location
     public function __toString()
     {
         return (string) $this->getName();
+    }
+
+    /**
+     * @return Collection|Celebration[]
+     */
+    public function getCelebrations()
+    {
+        return $this->celebrations;
+    }
+
+    public function addCelebration(Celebration $celebration)
+    {
+        if ($this->celebrations->contains($celebration)) {
+            return;
+        }
+
+        $this->celebrations[] = $celebration;
+        // set the *owning* side!
+        $celebration->setLocation($this);
+    }
+
+    public function removeCelebration(Celebration $celebration)
+    {
+        $this->celebrations->removeElement($celebration);
+        // set the owning side to null
+        $celebration->setLocation(null);
     }
 }

@@ -27,6 +27,7 @@ class SupplierType extends AbstractType
                         ->orderBy('country.name', 'ASC');
                 },
                 'choice_label' => 'name',
+                'placeholder' => '',
             ])
         ;
     }

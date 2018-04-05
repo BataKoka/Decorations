@@ -20,7 +20,9 @@
 .web-server-pid
 ###< symfony/web-server-bundle ###
 
-### PhpStorm ###
+### PhpStorm, User-specific stuff ###
 .idea/**/workspace.xml
 .idea/**/tasks.xml
-### PhpStorm ###
+**/.idea/workspace.xml
+**/.idea/tasks.xml
+### PhpStorm, User-specific stuff ###

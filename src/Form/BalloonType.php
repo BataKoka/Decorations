@@ -28,6 +28,7 @@ class BalloonType extends AbstractType
                         ->orderBy('color.name', 'ASC');
                 },
                 'choice_label' => 'name',
+                'placeholder' => '',
             ])
             ->add('colorType', EntityType::class, [
                 'class' => 'App\Entity\ColorType',
@@ -37,6 +38,7 @@ class BalloonType extends AbstractType
                         ->orderBy('colorType.name', 'ASC');
                 },
                 'choice_label' => 'name',
+                'placeholder' => '',
             ])
             ->add('diameter', EntityType::class, [
                 'class' => 'App\Entity\Diameter',
@@ -46,6 +48,7 @@ class BalloonType extends AbstractType
                         ->orderBy('diameter.name', 'ASC');
                 },
                 'choice_label' => 'name',
+                'placeholder' => '',
             ])
             ->add('material', EntityType::class, [
                 'class' => 'App\Entity\Material',
@@ -55,6 +58,7 @@ class BalloonType extends AbstractType
                         ->orderBy('material.name', 'ASC');
                 },
                 'choice_label' => 'name',
+                'placeholder' => '',
             ])
             ->add('printType', EntityType::class, [
                 'class' => 'App\Entity\PrintType',
@@ -64,6 +68,7 @@ class BalloonType extends AbstractType
                         ->orderBy('printType.name', 'ASC');
                 },
                 'choice_label' => 'name',
+                'placeholder' => '',
             ])
             ->add('shape', EntityType::class, [
                 'class' => 'App\Entity\Shape',
@@ -73,6 +78,7 @@ class BalloonType extends AbstractType
                         ->orderBy('shape.name', 'ASC');
                 },
                 'choice_label' => 'name',
+                'placeholder' => '',
             ])
             ->add('supplier', EntityType::class, [
                 'class' => 'App\Entity\Supplier',
@@ -82,6 +88,7 @@ class BalloonType extends AbstractType
                         ->orderBy('supplier.name', 'ASC');
                 },
                 'choice_label' => 'name',
+                'placeholder' => '',
             ])
         ;
     }

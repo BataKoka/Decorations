@@ -29,6 +29,7 @@ class LocationType extends AbstractType
                         ->orderBy('locationType.name', 'ASC');
                 },
                 'choice_label' => 'name',
+                'placeholder' => '',
             ])
         ;
     }
