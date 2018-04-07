@@ -12,6 +12,7 @@ use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use App\Form\EventListener\LocationChangeInCelebrationsFormListener;
 
 class CelebrationType extends AbstractType
 {
@@ -58,6 +59,7 @@ class CelebrationType extends AbstractType
                 'choice_label' => 'name',
                 'placeholder' => '',
             ])
+//            ->addEventSubscriber(new LocationChangeInCelebrationsFormListener())
         ;
     }
 

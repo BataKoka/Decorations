@@ -17,7 +17,9 @@
             <tr>
                 <th>Active?</th>
                 <th>Name</th>
-                <th>Location Percentage</th>
+                <th>Type</th>
+                <th>Location</th>
+                <th>Location percentage</th>
                 <th>Date</th>
                 <th>Revenue</th>
                 <th>Worker Expense</th>
@@ -30,6 +32,8 @@
             <tr>
                 <td>{{ celebration.isActive ? '<span class="badge badge-success">Yes</span>' : '<span class="badge badge-danger">No</span>' }}</td>
                 <td>{{ celebration.name }}</td>
+                <td>{{ celebration.celebrationType.name }}</td>
+                <td>{{ celebration.location.name }}</td>
                 <td>{{ celebration.locationPercentage }} %</td>
                 <td>{{ celebration.date ? celebration.date|date('d. M Y') : '' }}</td>
                 <td>{{ celebration.revenue }}</td>
