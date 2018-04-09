@@ -1,7 +1,17 @@
 {{ form_start(form) }}
     {{ form_row(form.name) }}
     {{ form_row(form.locationType) }}
-    {{ form_row(form.percentage) }}
+    {#{{ form_row(form.percentage) }}#}
+    <div class="form-group row">
+        {{ form_label(form.percentage) }}
+        {{ form_errors(form.percentage) }}
+        <div class="col-sm-10 input-group">
+            {{ form_widget(form.percentage) }}
+            <div class="input-group-append">
+                <span class="input-group-text">%</span>
+            </div>
+        </div>
+    </div>
     {{ form_row(form.isActive) }}
     <div class="form-group row">
         <div class="col-sm-2"></div>

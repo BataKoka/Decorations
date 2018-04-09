@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -78,6 +80,19 @@ class Celebration
      * @ORM\Column(type="integer", options={"unsigned":true, "default":0})
      */
     private $transportExpense = 0;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Decoration", mappedBy="celebration")
+     */
+    private $decorations;
+
+    /**
+     * Celebration constructor.
+     */
+    public function __construct()
+    {
+        $this->decorations = new ArrayCollection();
+    }
 
     /**
      * @return mixed
@@ -234,5 +249,31 @@ class Celebration
     public function __toString()
     {
         return (string) $this->getName();
+    }
+
+    /**
+     * @return Collection|Decoration[]
+     */
+    public function getDecorations()
+    {
+        return $this->decorations;
+    }
+
+    public function addDecoration(Decoration $decoration)
+    {
+        if ($this->decorations->contains($decoration)) {
+            return;
+        }
+
+        $this->decorations[] = $decoration;
+        // set the *owning* side!
+        $decoration->setCelebration($this);
+    }
+
+    public function removeDecoration(Decoration $decoration)
+    {
+        $this->decorations->removeElement($decoration);
+        // set the owning side to null
+        $decoration->setCelebration(null);
     }
 }

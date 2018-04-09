@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Celebration;
+use App\Entity\Location;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -58,6 +59,9 @@ class CelebrationType extends AbstractType
                 },
                 'choice_label' => 'name',
                 'placeholder' => '',
+                'choice_attr' => function (Location $location, $key, $index) {
+                    return ['data-percentage' => $location->getPercentage()];
+                },
             ])
 //            ->addEventSubscriber(new LocationChangeInCelebrationsFormListener())
         ;

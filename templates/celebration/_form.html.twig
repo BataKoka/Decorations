@@ -2,7 +2,17 @@
     {{ form_row(form.name) }}
     {{ form_row(form.celebrationType) }}
     {{ form_row(form.location) }}
-    {{ form_row(form.locationPercentage) }}
+    {#{{ form_row(form.locationPercentage) }}#}
+    <div class="form-group row">
+        {{ form_label(form.locationPercentage) }}
+        {{ form_errors(form.locationPercentage) }}
+        <div class="col-sm-10 input-group">
+            {{ form_widget(form.locationPercentage) }}
+            <div class="input-group-append">
+                <span class="input-group-text">%</span>
+            </div>
+        </div>
+    </div>
     {{ form_row(form.date) }}
     {{ form_row(form.revenue) }}
     {{ form_row(form.workerExpense) }}

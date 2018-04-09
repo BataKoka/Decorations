@@ -13,9 +13,10 @@ $(document).ready(function () {
         todayHighlight: true
     });
 
-    $('#celebration_location').change(function () {
+    // nacin koji sam upotrebio dole je bolji i brzi od ajax poziva, provereno
+    /*$('#celebration_location').change(function () {
         var locationId = $(this).val();
-        console.log(locationId);
+
         $.ajax({
             url: '/celebration/get-location-percentage',
             method: 'GET',
@@ -30,5 +31,11 @@ $(document).ready(function () {
                 alert('An error occurred while loading data.');
             }
         });
+    });*/
+
+    // bolji i brzi nacin od ajax poziva
+    $('#celebration_location').change(function () {
+        var locationPercentageNum = $(this).find(':selected').attr('data-percentage');
+        $('#celebration_locationPercentage').val(locationPercentageNum);
     });
 });
