@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -84,6 +86,19 @@ class Balloon
      * @ORM\ManyToOne(targetEntity="Supplier", inversedBy="balloons")
      */
     private $supplier;
+
+    /**
+     * @ORM\OneToMany(targetEntity="DecorationItem", mappedBy="balloon")
+     */
+    private $decorationItems;
+
+    /**
+     * Balloon constructor.
+     */
+    public function __construct()
+    {
+        $this->decorationItems = new ArrayCollection();
+    }
 
     /**
      * @return mixed
@@ -256,5 +271,31 @@ class Balloon
     public function __toString()
     {
         return (string) $this->getName();
+    }
+
+    /**
+     * @return Collection|DecorationItem[]
+     */
+    public function getDecorationItems()
+    {
+        return $this->decorationItems;
+    }
+
+    public function addDecorationItem(DecorationItem $decorationItem)
+    {
+        if ($this->decorationItems->contains($decorationItem)) {
+            return;
+        }
+
+        $this->decorationItems[] = $decorationItem;
+        // set the *owning* side!
+        $decorationItem->setBalloon($this);
+    }
+
+    public function removeDecorationItem(DecorationItem $decorationItem)
+    {
+        $this->decorationItems->removeElement($decorationItem);
+        // set the owning side to null
+        $decorationItem->setBalloon(null);
     }
 }

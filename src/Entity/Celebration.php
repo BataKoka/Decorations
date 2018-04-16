@@ -57,6 +57,7 @@ class Celebration
     /**
      * @Assert\NotBlank()
      * @Assert\Date()
+     * @Assert\GreaterThanOrEqual("today")
      * @ORM\Column(type="date")
      */
     private $date;
@@ -64,7 +65,7 @@ class Celebration
     /**
      * @Assert\NotBlank()
      * @Assert\Type("integer")
-     * @Assert\Range(min="0")
+     * @Assert\GreaterThanOrEqual(0)
      * @ORM\Column(type="integer", options={"unsigned":true, "default":0})
      */
     private $revenue = 0;
@@ -82,7 +83,7 @@ class Celebration
     private $transportExpense = 0;
 
     /**
-     * @ORM\OneToMany(targetEntity="Decoration", mappedBy="celebration")
+     * @ORM\OneToMany(targetEntity="Decoration", mappedBy="celebration", orphanRemoval=true)
      */
     private $decorations;
 

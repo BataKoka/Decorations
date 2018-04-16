@@ -3,11 +3,13 @@
 namespace App\Controller;
 
 use App\Entity\Celebration;
+use App\Entity\Decoration;
 use App\Form\CelebrationType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Form;
 
 /**
  * @Route("/celebration")
@@ -42,6 +44,10 @@ class CelebrationController extends Controller
 
             $this->addFlash('success', '<strong>Success!</strong> Item has been added successfully');
 
+            if ($request->request->has('saveAndContinue')) {
+                return $this->redirectToRoute('celebration_edit', ['id' => $celebration->getId()]);
+            }
+
             return $this->redirectToRoute('celebration_index');
         }
 
@@ -67,10 +73,18 @@ class CelebrationController extends Controller
         $form = $this->createForm(CelebrationType::class, $celebration);
         $form->handleRequest($request);
 
+        $decorations = $this->getDoctrine()
+            ->getRepository(Decoration::class)
+            ->findBy(['celebration' => $celebration->getId()]);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
             $this->addFlash('success', '<strong>Success!</strong> Item has been edited successfully');
+
+            if ($request->request->has('saveAndContinue')) {
+                return $this->redirectToRoute('celebration_edit', ['id' => $celebration->getId()]);
+            }
 
 //            return $this->redirectToRoute('celebration_edit', ['id' => $celebration->getId()]);
             return $this->redirectToRoute('celebration_index');
@@ -79,6 +93,7 @@ class CelebrationController extends Controller
         return $this->render('celebration/edit.html.twig', [
             'celebration' => $celebration,
             'form' => $form->createView(),
+            'decorations' => $decorations,
         ]);
     }
 

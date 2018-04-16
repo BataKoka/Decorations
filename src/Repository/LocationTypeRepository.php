@@ -31,4 +31,17 @@ class LocationTypeRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    /*
+    public function createAlphabeticalQueryBuilder()
+    {
+        return $this->createQueryBuilder('locationType')
+            ->andWhere('locationType.isActive = :param')
+            ->setParameter('param', true)
+            ->orderBy('locationType.name', 'ASC')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+    */
 }
