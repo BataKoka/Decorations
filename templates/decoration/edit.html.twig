@@ -10,7 +10,12 @@
         </div>
     </div>
 
-    {{ include('decoration/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('decoration/_form.html.twig', {
+        'button_label': 'Update',
+        'button_2': 'Update & continue'
+    }) }}
 
     {#{{ include('decoration/_delete_form.html.twig') }}#}
+
+    {{ include('@root/decoration_item/index.html.twig') }}
 {% endblock %}

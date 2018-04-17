@@ -31,4 +31,11 @@ class LocationRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function findAllActive()
+    {
+        return $this->createQueryBuilder('location')
+            ->andWhere('location.isActive = :value')->setParameter('value', true)
+            ->orderBy('location.name', 'ASC');
+    }
 }

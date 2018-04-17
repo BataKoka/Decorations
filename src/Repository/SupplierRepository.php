@@ -31,4 +31,11 @@ class SupplierRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function findAllActive()
+    {
+        return $this->createQueryBuilder('supplier')
+            ->andWhere('supplier.isActive = :value')->setParameter('value', true)
+            ->orderBy('supplier.name', 'ASC');
+    }
 }

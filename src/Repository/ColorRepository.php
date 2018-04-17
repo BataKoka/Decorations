@@ -31,4 +31,11 @@ class ColorRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function findAllActive()
+    {
+        return $this->createQueryBuilder('color')
+            ->andWhere('color.isActive = :value')->setParameter('value', true)
+            ->orderBy('color.name', 'ASC');
+    }
 }

@@ -31,4 +31,11 @@ class BalloonRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function findAllActive()
+    {
+        return $this->createQueryBuilder('balloon')
+            ->andWhere('balloon.isActive = :value')->setParameter('value', true)
+            ->orderBy('balloon.name', 'ASC');
+    }
 }

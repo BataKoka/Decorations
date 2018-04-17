@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Decoration Item{% endblock %}
+
+{% block body %}
+    <div class="form-group row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-10">
+            <h1 class="h3 mb-3 font-weight-normal">Edit Decoration Item: {{ decoration_item.balloon.name }}</h1>
+        </div>
+    </div>
+
+    {{ include('decoration_item/_form.html.twig', {'button_label': 'Update'}) }}
+
+    {#{{ include('decoration_item/_delete_form.html.twig') }}#}
+{% endblock %}

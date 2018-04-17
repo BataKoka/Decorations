@@ -32,15 +32,10 @@ class CelebrationTypeRepository extends ServiceEntityRepository
     }
     */
 
-    /*
     public function findAllActive()
     {
-        return $this->createQueryBuilder('celebrationType')
-            ->where('celebrationType.isActive = :value')->setParameter('value', true)
-            ->orderBy('celebrationType.name', 'ASC')
-            ->getQuery()
-            ->getResult()
-            ;
+        return $this->createQueryBuilder('celebration_type')
+            ->andWhere('celebration_type.isActive = :value')->setParameter('value', true)
+            ->orderBy('celebration_type.name', 'ASC');
     }
-    */
 }

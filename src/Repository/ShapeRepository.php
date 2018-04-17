@@ -31,4 +31,11 @@ class ShapeRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function findAllActive()
+    {
+        return $this->createQueryBuilder('shape')
+            ->andWhere('shape.isActive = :value')->setParameter('value', true)
+            ->orderBy('shape.name', 'ASC');
+    }
 }

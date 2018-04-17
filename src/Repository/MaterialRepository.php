@@ -31,4 +31,11 @@ class MaterialRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function findAllActive()
+    {
+        return $this->createQueryBuilder('material')
+            ->andWhere('material.isActive = :value')->setParameter('value', true)
+            ->orderBy('material.name', 'ASC');
+    }
 }

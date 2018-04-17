@@ -7,7 +7,6 @@ use FOS\UserBundle\Model\User as BaseUser;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
- * @ORM\Entity
  * @ORM\Table(name="`users`")
  */
 class User extends BaseUser

@@ -31,4 +31,11 @@ class PrintTypeRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function findAllActive()
+    {
+        return $this->createQueryBuilder('print_type')
+            ->andWhere('print_type.isActive = :value')->setParameter('value', true)
+            ->orderBy('print_type.name', 'ASC');
+    }
 }

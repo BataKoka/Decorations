@@ -31,4 +31,11 @@ class DiameterRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function findAllActive()
+    {
+        return $this->createQueryBuilder('diameter')
+            ->andWhere('diameter.isActive = :value')->setParameter('value', true)
+            ->orderBy('diameter.name', 'ASC');
+    }
 }

@@ -1,13 +1,16 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
+    {{ form_row(form.balloon) }}
+    {{ form_row(form.price) }}
+    {{ form_row(form.quantity) }}
+    {{ form_row(form.total) }}
+    {{ form_row(form.isActive) }}
     <div class="form-group row">
         <div class="col-sm-2"></div>
         <div class="col-sm-8">
             <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
-            <button class="btn btn-primary" name="saveAndContinue">{{ button_2|default('Save & continue') }}</button>
         </div>
         <div class="col-sm-2">
-            <a href="{{ path('celebration_edit', {'id': celebrationId}) }}" class="btn btn-outline-info">back to list</a>
+            <a href="{{ path('decoration_edit', {'id': decorationId}) }}" class="btn btn-outline-info">back to list</a>
         </div>
     </div>
 {{ form_end(form) }}

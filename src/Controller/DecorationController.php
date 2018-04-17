@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Celebration;
 use App\Entity\Decoration;
+use App\Entity\DecorationItem;
 use App\Form\DecorationType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -26,7 +27,7 @@ class DecorationController extends Controller
 //    }
 
     /**
-     * @Route("/celebrations/{celebrationId}/decorations/new", name="decoration_new", methods="GET|POST")
+     * @Route("/celebration/{celebrationId}/decoration/new", name="decoration_new", methods="GET|POST")
      */
     public function new(Request $request, $celebrationId): Response
     {
@@ -45,6 +46,10 @@ class DecorationController extends Controller
             $em->flush();
 
             $this->addFlash('success', '<strong>Success!</strong> Item has been added successfully');
+
+            if ($request->request->has('saveAndContinue')) {
+                return $this->redirectToRoute('decoration_edit', ['id' => $decoration->getId()]);
+            }
 
             return $this->redirectToRoute('celebration_edit', ['id' => $celebrationId]);
         }
@@ -74,10 +79,18 @@ class DecorationController extends Controller
         $celebration = $decoration->getCelebration();
         $celebrationId = $celebration->getId();
 
+        $decorationItems = $this->getDoctrine()
+            ->getRepository(DecorationItem::class)
+            ->findBy(['decoration' => $decoration->getId()]);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
             $this->addFlash('success', '<strong>Success!</strong> Item has been edited successfully');
+
+            if ($request->request->has('saveAndContinue')) {
+                return $this->redirectToRoute('decoration_edit', ['id' => $decoration->getId()]);
+            }
 
 //            return $this->redirectToRoute('decoration_edit', ['id' => $decoration->getId()]);
             return $this->redirectToRoute('celebration_edit', ['id' => $celebrationId]);
@@ -87,6 +100,7 @@ class DecorationController extends Controller
             'decoration' => $decoration,
             'form' => $form->createView(),
             'celebrationId' => $celebrationId,
+            'decoration_items' => $decorationItems,
         ]);
     }
 

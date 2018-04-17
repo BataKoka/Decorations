@@ -3,8 +3,10 @@
 namespace App\Form;
 
 use App\Entity\Celebration;
+use App\Entity\CelebrationType as TipProslave;
 use App\Entity\Location;
-use Doctrine\ORM\EntityRepository;
+use App\Repository\CelebrationTypeRepository;
+use App\Repository\LocationRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -41,27 +43,23 @@ class CelebrationType extends AbstractType
             ->add('workerExpense', IntegerType::class)
             ->add('transportExpense', IntegerType::class)
             ->add('celebrationType', EntityType::class, [
-                'class' => 'App\Entity\CelebrationType',
-                'query_builder' => function (EntityRepository $er) {
-                    return $er->createQueryBuilder('celebrationType')
-                        ->andWhere('celebrationType.isActive = :value')->setParameter('value', true)
-                        ->orderBy('celebrationType.name', 'ASC');
-                },
+                'class' => TipProslave::class,
                 'choice_label' => 'name',
                 'placeholder' => '',
+                'query_builder' => function (CelebrationTypeRepository $repo) {
+                    return $repo->findAllActive();
+                }
             ])
             ->add('location', EntityType::class, [
-                'class' => 'App\Entity\Location',
-                'query_builder' => function (EntityRepository $er) {
-                    return $er->createQueryBuilder('location')
-                        ->andWhere('location.isActive = :value')->setParameter('value', true)
-                        ->orderBy('location.name', 'ASC');
-                },
+                'class' => Location::class,
                 'choice_label' => 'name',
                 'placeholder' => '',
+                'query_builder' => function (LocationRepository $repo) {
+                    return $repo->findAllActive();
+                },
                 'choice_attr' => function (Location $location, $key, $index) {
                     return ['data-percentage' => $location->getPercentage()];
-                },
+                }
             ])
 //            ->addEventSubscriber(new LocationChangeInCelebrationsFormListener())
         ;

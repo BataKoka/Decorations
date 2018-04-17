@@ -10,7 +10,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\CelebrationTypeRepository")
- * @ORM\Entity
  * @ORM\Table(name="celebration_types")
  * @UniqueEntity("name")
  */

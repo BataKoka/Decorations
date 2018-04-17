@@ -3,7 +3,20 @@
 namespace App\Form;
 
 use App\Entity\Balloon;
-use Doctrine\ORM\EntityRepository;
+use App\Entity\Color;
+use App\Entity\ColorType;
+use App\Entity\Diameter;
+use App\Entity\Material;
+use App\Entity\PrintType;
+use App\Entity\Shape;
+use App\Entity\Supplier;
+use App\Repository\ColorRepository;
+use App\Repository\ColorTypeRepository;
+use App\Repository\DiameterRepository;
+use App\Repository\MaterialRepository;
+use App\Repository\PrintTypeRepository;
+use App\Repository\ShapeRepository;
+use App\Repository\SupplierRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -21,74 +34,60 @@ class BalloonType extends AbstractType
             ->add('isActive', CheckboxType::class, ['required' => false])
             ->add('price', NumberType::class, ['scale' => 2])
             ->add('color', EntityType::class, [
-                'class' => 'App\Entity\Color',
-                'query_builder' => function (EntityRepository $er) {
-                    return $er->createQueryBuilder('color')
-                        ->andWhere('color.isActive = :value')->setParameter('value', true)
-                        ->orderBy('color.name', 'ASC');
-                },
+                'class' => Color::class,
                 'choice_label' => 'name',
                 'placeholder' => '',
+                'query_builder' => function (ColorRepository $repo) {
+                    return $repo->findAllActive();
+                }
             ])
             ->add('colorType', EntityType::class, [
-                'class' => 'App\Entity\ColorType',
-                'query_builder' => function (EntityRepository $er) {
-                    return $er->createQueryBuilder('colorType')
-                        ->andWhere('colorType.isActive = :value')->setParameter('value', true)
-                        ->orderBy('colorType.name', 'ASC');
-                },
+                'class' => ColorType::class,
                 'choice_label' => 'name',
                 'placeholder' => '',
+                'query_builder' => function (ColorTypeRepository $repo) {
+                    return $repo->findAllActive();
+                }
             ])
             ->add('diameter', EntityType::class, [
-                'class' => 'App\Entity\Diameter',
-                'query_builder' => function (EntityRepository $er) {
-                    return $er->createQueryBuilder('diameter')
-                        ->andWhere('diameter.isActive = :value')->setParameter('value', true)
-                        ->orderBy('diameter.name', 'ASC');
-                },
+                'class' => Diameter::class,
                 'choice_label' => 'name',
                 'placeholder' => '',
+                'query_builder' => function (DiameterRepository $repo) {
+                    return $repo->findAllActive();
+                }
             ])
             ->add('material', EntityType::class, [
-                'class' => 'App\Entity\Material',
-                'query_builder' => function (EntityRepository $er) {
-                    return $er->createQueryBuilder('material')
-                        ->andWhere('material.isActive = :value')->setParameter('value', true)
-                        ->orderBy('material.name', 'ASC');
-                },
+                'class' => Material::class,
                 'choice_label' => 'name',
                 'placeholder' => '',
+                'query_builder' => function (MaterialRepository $repo) {
+                    return $repo->findAllActive();
+                }
             ])
             ->add('printType', EntityType::class, [
-                'class' => 'App\Entity\PrintType',
-                'query_builder' => function (EntityRepository $er) {
-                    return $er->createQueryBuilder('printType')
-                        ->andWhere('printType.isActive = :value')->setParameter('value', true)
-                        ->orderBy('printType.name', 'ASC');
-                },
+                'class' => PrintType::class,
                 'choice_label' => 'name',
                 'placeholder' => '',
+                'query_builder' => function (PrintTypeRepository $repo) {
+                    return $repo->findAllActive();
+                }
             ])
             ->add('shape', EntityType::class, [
-                'class' => 'App\Entity\Shape',
-                'query_builder' => function (EntityRepository $er) {
-                    return $er->createQueryBuilder('shape')
-                        ->andWhere('shape.isActive = :value')->setParameter('value', true)
-                        ->orderBy('shape.name', 'ASC');
-                },
+                'class' => Shape::class,
                 'choice_label' => 'name',
                 'placeholder' => '',
+                'query_builder' => function (ShapeRepository $repo) {
+                    return $repo->findAllActive();
+                }
             ])
             ->add('supplier', EntityType::class, [
-                'class' => 'App\Entity\Supplier',
-                'query_builder' => function (EntityRepository $er) {
-                    return $er->createQueryBuilder('supplier')
-                        ->andWhere('supplier.isActive = :value')->setParameter('value', true)
-                        ->orderBy('supplier.name', 'ASC');
-                },
+                'class' => Supplier::class,
                 'choice_label' => 'name',
                 'placeholder' => '',
+                'query_builder' => function (SupplierRepository $repo) {
+                    return $repo->findAllActive();
+                }
             ])
         ;
     }

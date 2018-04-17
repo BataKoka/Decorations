@@ -38,4 +38,9 @@ $(document).ready(function () {
         var locationPercentageNum = $(this).find(':selected').attr('data-percentage');
         $('#celebration_locationPercentage').val(locationPercentageNum);
     });
+
+    $('#decoration_item_balloon').change(function () {
+        var balloonPrice = $(this).find(':selected').attr('data-price');
+        $('#decoration_item_price').val(balloonPrice);
+    });
 });

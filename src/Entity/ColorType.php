@@ -10,7 +10,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ColorTypeRepository")
- * @ORM\Entity
  * @ORM\Table(name="color_types")
  * @UniqueEntity("name")
  */

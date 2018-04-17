@@ -31,4 +31,11 @@ class CountryRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function findAllActive()
+    {
+        return $this->createQueryBuilder('country')
+            ->andWhere('country.isActive = :value')->setParameter('value', true)
+            ->orderBy('country.name', 'ASC');
+    }
 }

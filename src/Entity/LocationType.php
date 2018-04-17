@@ -10,7 +10,6 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\LocationTypeRepository")
- * @ORM\Entity
  * @ORM\Table(name="location_types")
  * @UniqueEntity("name")
  */

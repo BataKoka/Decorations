@@ -3,7 +3,8 @@
 namespace App\Form;
 
 use App\Entity\Location;
-use Doctrine\ORM\EntityRepository;
+use App\Entity\LocationType as TipLokacije;
+use App\Repository\LocationTypeRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
@@ -21,15 +22,12 @@ class LocationType extends AbstractType
             ->add('percentage', IntegerType::class)
             ->add('isActive', CheckboxType::class, ['required' => false])
             ->add('locationType', EntityType::class, [
-                'class' => 'App\Entity\LocationType',
-                'query_builder' => function (EntityRepository $er) {
-                    return $er->createQueryBuilder('locationType')
-                        ->andWhere('locationType.isActive = :param')
-                        ->setParameter('param', true)
-                        ->orderBy('locationType.name', 'ASC');
-                },
+                'class' => TipLokacije::class,
                 'choice_label' => 'name',
                 'placeholder' => '',
+                'query_builder' => function (LocationTypeRepository $repo) {
+                    return $repo->findAllActive();
+                }
             ])
         ;
     }

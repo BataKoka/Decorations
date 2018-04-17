@@ -32,16 +32,10 @@ class LocationTypeRepository extends ServiceEntityRepository
     }
     */
 
-    /*
-    public function createAlphabeticalQueryBuilder()
+    public function findAllActive()
     {
-        return $this->createQueryBuilder('locationType')
-            ->andWhere('locationType.isActive = :param')
-            ->setParameter('param', true)
-            ->orderBy('locationType.name', 'ASC')
-            ->getQuery()
-            ->getResult()
-        ;
+        return $this->createQueryBuilder('location_type')
+            ->andWhere('location_type.isActive = :value')->setParameter('value', true)
+            ->orderBy('location_type.name', 'ASC');
     }
-    */
 }
