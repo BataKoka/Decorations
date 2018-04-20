@@ -143,4 +143,9 @@ class DecorationItem
     {
         return (string) $this->getPrice();
     }
+
+    public function getTotalPrice()
+    {
+        return $this->getPrice() * $this->getQuantity();
+    }
 }

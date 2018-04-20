@@ -19,9 +19,17 @@
                 <th>Balloon</th>
                 <th>Price</th>
                 <th>Quantity</th>
+                <th>Total</th>
                 <th class="text-center">Actions</th>
             </tr>
         </thead>
+        <tfoot>
+            <tr>
+                <th colspan="4"></th>
+                <th>{{ decoration.isActive ? decoration.getTotalPrice() : 0 }}</th>
+                <th></th>
+            </tr>
+        </tfoot>
         <tbody>
         {% for decoration_item in decoration_items %}
             <tr>
@@ -29,6 +37,9 @@
                 <td>{{ decoration_item.balloon.name }}</td>
                 <td>{{ decoration_item.price }}</td>
                 <td>{{ decoration_item.quantity }}</td>
+                <td {% if decoration.isActive == false or decoration_item.isActive == false %}class="text-danger"{% endif %}>
+                    {{ decoration_item.getTotalPrice() }}
+                </td>
                 <td class="text-center">
                     <div class="btn-group" role="group" aria-label="Basic example">
                         {#<a href="{{ path('decoration_item_show', {'id': decoration_item.id}) }}">show</a>#}

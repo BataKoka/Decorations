@@ -142,4 +142,20 @@ class Decoration
         // set the owning side to null
         $decorationItem->setDecoration(null);
     }
+
+    public function getTotalPrice()
+    {
+        // get all active decorationItems
+        $activeDecorationItems = $this->getDecorationItems()->filter(function ($decorationItem) {
+            /** @var DecorationItem $decorationItem */
+            return $decorationItem->getIsActive();
+        });
+
+        $total = 0;
+        foreach ($activeDecorationItems as $activeDecorationItem) {
+            /** @var DecorationItem $activeDecorationItem */
+            $total += $activeDecorationItem->getTotalPrice();
+        }
+        return $total;
+    }
 }
