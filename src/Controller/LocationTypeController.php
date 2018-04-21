@@ -91,6 +91,12 @@ class LocationTypeController extends Controller
             return $this->redirectToRoute('location_type_index');
         }
 
+        if (!$locationType->getLocations()->isEmpty()) {
+            $numOfLocations = \count($locationType->getLocations());
+            $this->addFlash('danger', '<strong>Error!</strong> Cannot delete ' . $locationType->getName() . ' because it is being used by ' . $numOfLocations . ' Location(s)');
+            return $this->redirectToRoute('location_type_index');
+        }
+
         $em = $this->getDoctrine()->getManager();
         $em->remove($locationType);
         $em->flush();

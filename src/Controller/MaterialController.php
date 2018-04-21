@@ -91,6 +91,12 @@ class MaterialController extends Controller
             return $this->redirectToRoute('material_index');
         }
 
+        if (!$material->getBalloons()->isEmpty()) {
+            $numOfBalloons = \count($material->getBalloons());
+            $this->addFlash('danger', '<strong>Error!</strong> Cannot delete ' . $material->getName() . ' because it is being used by ' . $numOfBalloons . ' Balloon(s)');
+            return $this->redirectToRoute('material_index');
+        }
+
         $em = $this->getDoctrine()->getManager();
         $em->remove($material);
         $em->flush();

@@ -12,8 +12,8 @@
         </div>
     </div>
 
-    <table class="table">
-        <thead>
+    <table id="data_tables" class="table table-hover">
+        <thead class="thead-light">
             <tr>
                 <th>Active?</th>
                 <th>Name</th>
@@ -42,7 +42,7 @@
                 <td>{{ balloon.supplier.name }}</td>
                 <td>{{ balloon.price }}</td>
                 <td class="text-center">
-                    <div class="btn-group" role="group" aria-label="Basic example">
+                    <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
                         {#<a href="{{ path('balloon_show', {'id': balloon.id}) }}">show</a>#}
                         <a href="{{ path('balloon_edit', {'id': balloon.id}) }}" class="btn btn-primary">Edit</a>
                         {{ include('balloon/_delete_form.html.twig') }}

@@ -91,6 +91,12 @@ class CountryController extends Controller
             return $this->redirectToRoute('country_index');
         }
 
+        if (!$country->getSuppliers()->isEmpty()) {
+            $numOfSuppliers = \count($country->getSuppliers());
+            $this->addFlash('danger', '<strong>Error!</strong> Cannot delete ' . $country->getName() . ' because it is being used by ' . $numOfSuppliers . ' Supplier(s)');
+            return $this->redirectToRoute('country_index');
+        }
+
         $em = $this->getDoctrine()->getManager();
         $em->remove($country);
         $em->flush();

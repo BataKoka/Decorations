@@ -91,6 +91,12 @@ class ShapeController extends Controller
             return $this->redirectToRoute('shape_index');
         }
 
+        if (!$shape->getBalloons()->isEmpty()) {
+            $numOfBalloons = \count($shape->getBalloons());
+            $this->addFlash('danger', '<strong>Error!</strong> Cannot delete ' . $shape->getName() . ' because it is being used by ' . $numOfBalloons . ' Balloon(s)');
+            return $this->redirectToRoute('shape_index');
+        }
+
         $em = $this->getDoctrine()->getManager();
         $em->remove($shape);
         $em->flush();

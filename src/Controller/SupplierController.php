@@ -91,6 +91,12 @@ class SupplierController extends Controller
             return $this->redirectToRoute('supplier_index');
         }
 
+        if (!$supplier->getBalloons()->isEmpty()) {
+            $numOfBalloons = \count($supplier->getBalloons());
+            $this->addFlash('danger', '<strong>Error!</strong> Cannot delete ' . $supplier->getName() . ' because it is being used by ' . $numOfBalloons . ' Balloon(s)');
+            return $this->redirectToRoute('supplier_index');
+        }
+
         $em = $this->getDoctrine()->getManager();
         $em->remove($supplier);
         $em->flush();

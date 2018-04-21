@@ -91,6 +91,12 @@ class BalloonController extends Controller
             return $this->redirectToRoute('balloon_index');
         }
 
+        if (!$balloon->getDecorationItems()->isEmpty()) {
+            $numOfDecorationItems = \count($balloon->getDecorationItems());
+            $this->addFlash('danger', '<strong>Error!</strong> Cannot delete ' . $balloon->getName() . ' because it is being used by ' . $numOfDecorationItems . ' Decoration Item(s)');
+            return $this->redirectToRoute('balloon_index');
+        }
+
         $em = $this->getDoctrine()->getManager();
         $em->remove($balloon);
         $em->flush();

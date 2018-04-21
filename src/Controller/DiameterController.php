@@ -91,6 +91,12 @@ class DiameterController extends Controller
             return $this->redirectToRoute('diameter_index');
         }
 
+        if (!$diameter->getBalloons()->isEmpty()) {
+            $numOfBalloons = \count($diameter->getBalloons());
+            $this->addFlash('danger', '<strong>Error!</strong> Cannot delete ' . $diameter->getName() . ' because it is being used by ' . $numOfBalloons . ' Balloon(s)');
+            return $this->redirectToRoute('diameter_index');
+        }
+
         $em = $this->getDoctrine()->getManager();
         $em->remove($diameter);
         $em->flush();

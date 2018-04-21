@@ -52,8 +52,20 @@ $(document).ready(function () {
     });
 
     // Price i Total polja u Form/DecorationItemType.php, dodatak za EDIT page
-    var balloonPrice = $('#decoration_item_price').val()
-    var quantity = $('#decoration_item_quantity').val()
+    var balloonPrice = $('#decoration_item_price').val();
+    var quantity = $('#decoration_item_quantity').val();
     var total = Number(balloonPrice * quantity).toFixed(2);
     $('#decoration_item_total').val(total);
+
+    // DataTables plug-in for the jQuery Javascript library
+    $('#data_tables').DataTable({
+        "order": [[ 1, 'asc' ]],
+        "columnDefs": [
+            { "orderable": false, "targets": -1 },
+            { "searchable": false, "targets": -1 }
+        ],
+        "lengthMenu": [ [5, 10, 25, 50, 100, -1], [5, 10, 25, 50, 100, "All"] ],
+        "pageLength": 10,
+        "pagingType": "full_numbers"
+    });
 });

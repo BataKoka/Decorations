@@ -91,6 +91,12 @@ class PrintTypeController extends Controller
             return $this->redirectToRoute('print_type_index');
         }
 
+        if (!$printType->getBalloons()->isEmpty()) {
+            $numOfBalloons = \count($printType->getBalloons());
+            $this->addFlash('danger', '<strong>Error!</strong> Cannot delete ' . $printType->getName() . ' because it is being used by ' . $numOfBalloons . ' Balloon(s)');
+            return $this->redirectToRoute('print_type_index');
+        }
+
         $em = $this->getDoctrine()->getManager();
         $em->remove($printType);
         $em->flush();

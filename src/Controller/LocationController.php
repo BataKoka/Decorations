@@ -91,6 +91,12 @@ class LocationController extends Controller
             return $this->redirectToRoute('location_index');
         }
 
+        if (!$location->getCelebrations()->isEmpty()) {
+            $numOfCelebrations = \count($location->getCelebrations());
+            $this->addFlash('danger', '<strong>Error!</strong> Cannot delete ' . $location->getName() . ' because it is being used by ' . $numOfCelebrations . ' Celebration(s)');
+            return $this->redirectToRoute('location_index');
+        }
+
         $em = $this->getDoctrine()->getManager();
         $em->remove($location);
         $em->flush();

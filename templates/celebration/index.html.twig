@@ -12,8 +12,8 @@
         </div>
     </div>
 
-    <table class="table">
-        <thead>
+    <table id="data_tables" class="table table-hover">
+        <thead class="thead-light">
             <tr>
                 <th>Active?</th>
                 <th>Name</th>
@@ -40,7 +40,7 @@
                 <td>{{ celebration.workerExpense }}</td>
                 <td>{{ celebration.transportExpense }}</td>
                 <td class="text-center">
-                    <div class="btn-group" role="group" aria-label="Basic example">
+                    <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
                         {#<a href="{{ path('celebration_show', {'id': celebration.id}) }}">show</a>#}
                         <a href="{{ path('celebration_edit', {'id': celebration.id}) }}" class="btn btn-primary">Edit</a>
                         {{ include('celebration/_delete_form.html.twig') }}

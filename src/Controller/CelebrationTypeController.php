@@ -91,6 +91,12 @@ class CelebrationTypeController extends Controller
             return $this->redirectToRoute('celebration_type_index');
         }
 
+        if (!$celebrationType->getCelebrations()->isEmpty()) {
+            $numOfCelebrations = \count($celebrationType->getCelebrations());
+            $this->addFlash('danger', '<strong>Error!</strong> Cannot delete ' . $celebrationType->getName() . ' because it is being used by ' . $numOfCelebrations . ' Celebration(s)');
+            return $this->redirectToRoute('celebration_type_index');
+        }
+
         $em = $this->getDoctrine()->getManager();
         $em->remove($celebrationType);
         $em->flush();

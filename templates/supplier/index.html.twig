@@ -12,8 +12,8 @@
         </div>
     </div>
 
-    <table class="table">
-        <thead>
+    <table id="data_tables" class="table table-hover">
+        <thead class="thead-light">
             <tr>
                 <th>Active?</th>
                 <th>Name</th>
@@ -28,7 +28,7 @@
                 <td>{{ supplier.name }}</td>
                 <td>{{ supplier.country.name }}</td>
                 <td class="text-center">
-                    <div class="btn-group" role="group" aria-label="Basic example">
+                    <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
                         {#<a href="{{ path('supplier_show', {'id': supplier.id}) }}">show</a>#}
                         <a href="{{ path('supplier_edit', {'id': supplier.id}) }}" class="btn btn-primary">Edit</a>
                         {{ include('supplier/_delete_form.html.twig') }}

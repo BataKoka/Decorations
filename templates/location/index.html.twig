@@ -12,8 +12,8 @@
         </div>
     </div>
 
-    <table class="table">
-        <thead>
+    <table id="data_tables" class="table table-hover">
+        <thead class="thead-light">
             <tr>
                 <th>Active?</th>
                 <th>Name</th>
@@ -30,7 +30,7 @@
                 <td>{{ location.locationType.name }}</td>
                 <td>{{ location.percentage }} %</td>
                 <td class="text-center">
-                    <div class="btn-group" role="group" aria-label="Basic example">
+                    <div class="btn-group btn-group-sm" role="group" aria-label="Basic example">
                         {#<a href="{{ path('location_show', {'id': location.id}) }}">show</a>#}
                         <a href="{{ path('location_edit', {'id': location.id}) }}" class="btn btn-primary">Edit</a>
                         {{ include('location/_delete_form.html.twig') }}

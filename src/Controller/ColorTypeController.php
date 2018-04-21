@@ -91,6 +91,12 @@ class ColorTypeController extends Controller
             return $this->redirectToRoute('color_type_index');
         }
 
+        if (!$colorType->getBalloons()->isEmpty()) {
+            $numOfBalloons = \count($colorType->getBalloons());
+            $this->addFlash('danger', '<strong>Error!</strong> Cannot delete ' . $colorType->getName() . ' because it is being used by ' . $numOfBalloons . ' Balloon(s)');
+            return $this->redirectToRoute('color_type_index');
+        }
+
         $em = $this->getDoctrine()->getManager();
         $em->remove($colorType);
         $em->flush();

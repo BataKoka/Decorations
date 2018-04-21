@@ -91,6 +91,12 @@ class ColorController extends Controller
             return $this->redirectToRoute('color_index');
         }
 
+        if (!$color->getBalloons()->isEmpty()) {
+            $numOfBalloons = \count($color->getBalloons());
+            $this->addFlash('danger', '<strong>Error!</strong> Cannot delete ' . $color->getName() . ' because it is being used by ' . $numOfBalloons . ' Balloon(s)');
+            return $this->redirectToRoute('color_index');
+        }
+
         $em = $this->getDoctrine()->getManager();
         $em->remove($color);
         $em->flush();
