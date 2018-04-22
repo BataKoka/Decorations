@@ -32,3 +32,10 @@ services:
             - '@router'
         tags:
             - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
+
+    App\EventListener\RegistrationRouteListener:
+        arguments:
+            - '@security.token_storage'
+            - '@router'
+        tags:
+            - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }

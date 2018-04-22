@@ -2,8 +2,8 @@
 /**
  * Created by PhpStorm.
  * User: Marko R
- * Date: 20/03/2018
- * Time: 16:25
+ * Date: 22/04/2018
+ * Time: 15:19
  */
 
 namespace App\EventListener;
@@ -16,7 +16,7 @@ use Symfony\Component\Routing\RouterInterface;
 use Symfony\Component\Security\Core\Authentication\Token\AnonymousToken;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
-class UserLoginRouteListener
+class RegistrationRouteListener
 {
     /**
      * @var TokenStorageInterface
@@ -28,6 +28,11 @@ class UserLoginRouteListener
      */
     private $routerInterface;
 
+    /**
+     * RegistrationRouteListener constructor.
+     * @param TokenStorageInterface $tokenStorageInterface
+     * @param RouterInterface $routerInterface
+     */
     public function __construct(TokenStorageInterface $tokenStorageInterface, RouterInterface $routerInterface)
     {
         $this->tokenStorageInterface = $tokenStorageInterface;
@@ -43,7 +48,7 @@ class UserLoginRouteListener
     {
         $request = $event->getRequest();
 
-        if ($request->get('_route') !== 'fos_user_security_login') {
+        if ($request->get('_route') !== 'fos_user_registration_register') {
             return false;
         }
 

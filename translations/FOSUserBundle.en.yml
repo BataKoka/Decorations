@@ -1,6 +1,6 @@
-registration:
-    flash:
-        user_created: 'Test for translator 123.'
+#registration:
+#    flash:
+#        user_created: 'Test for translator 123.'
 
 # Global strings
 layout:
