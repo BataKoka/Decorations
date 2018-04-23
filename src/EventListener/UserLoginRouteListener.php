@@ -42,8 +42,13 @@ class UserLoginRouteListener
     public function onKernelRequest(GetResponseEvent $event)
     {
         $request = $event->getRequest();
+        $routeName = $request->get('_route');
+        $routesToCheck = [
+            'fos_user_security_login',
+            'fos_user_registration_register',
+        ];
 
-        if ($request->get('_route') !== 'fos_user_security_login') {
+        if ( ! \in_array($routeName, $routesToCheck, true) ) {
             return false;
         }
 
