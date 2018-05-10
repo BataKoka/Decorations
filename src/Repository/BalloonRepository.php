@@ -38,4 +38,12 @@ class BalloonRepository extends ServiceEntityRepository
             ->andWhere('balloon.isActive = :value')->setParameter('value', true)
             ->orderBy('balloon.name', 'ASC');
     }
+
+//    public function getUsedBaloonsInYear($year)
+//    {
+//        return $this->createQueryBuilder('balloon')
+//            ->leftJoin('balloon.decorationItems', 'decoration_items')
+//            ->leftJoin('decoration_items.decoration', 'decoration')
+//            ->leftJoin('decoration.celebration', 'celebration');
+//    }
 }

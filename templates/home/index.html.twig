@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+    <h1 class="h3 mb-3 font-weight-normal">Dashboard</h1>
+
+    <table id="dashboard" class="table table-hover">
+        <thead class="thead-light">
+            <tr>
+               <th>Active?</th>
+               <th>Name</th>
+               <th class="text-right">Quantity</th>
+               <th class="text-right">Price</th>
+               <th class="text-right">Total</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for decorationItem in decorationItems %}
+            <tr>
+                <td>{{ decorationItem.isActive ? '<span class="badge badge-success">Yes</span>' : '<span class="badge badge-danger">No</span>' }}</td>
+                <td>{{ decorationItem.name }}</td>
+                <td class="text-right">{{ decorationItem.quantity|number_format }}</td>
+                <td class="text-right">{{ decorationItem.price }}</td>
+                <td class="text-right">{{ decorationItem.totalPrice }}</td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found for year {{ balloonsUsageYear }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <th colspan="4">
+                    Show number of balloons used in year
+                    <select onchange="window.location.href = '/home/' + this.value;">
+                        {% for year in yearsWithCelebrations %}
+                            <option value="{{ year }}" {% if year == balloonsUsageYear %}selected{% endif %}>
+                                {{ year }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </th>
+                <th class="text-right">{{ usedBalloonsInYearTotalPrice }}</th>
+            </tr>
+        </tfoot>
+    </table>
+    {#{{ dump(decorationItems) }}#}
+{% endblock %}

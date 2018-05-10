@@ -68,4 +68,8 @@ $(document).ready(function () {
         "pageLength": 10,
         "pagingType": "full_numbers"
     });
+
+    $('#dashboard').DataTable({
+        "order": [[ 1, 'asc' ]],
+    });
 });

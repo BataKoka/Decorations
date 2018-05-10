@@ -83,6 +83,9 @@
     "ocramius/proxy-manager": {
         "version": "2.2.0"
     },
+    "oro/doctrine-extensions": {
+        "version": "dev-master"
+    },
     "paragonie/random_compat": {
         "version": "v2.0.11"
     },

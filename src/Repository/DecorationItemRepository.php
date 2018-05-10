@@ -31,4 +31,28 @@ class DecorationItemRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function getUsedDecorationItemsInYear($year)
+    {
+        return $this->createQueryBuilder('decoration_item')
+            ->leftJoin('decoration_item.balloon', 'balloon')
+            ->leftJoin('decoration_item.decoration', 'decoration')
+            ->leftJoin('decoration.celebration', 'celebration')
+            ->where('decoration_item.isActive = :active',
+                    'decoration.isActive = :active',
+                    'celebration.isActive = :active',
+                    'YEAR(celebration.date) = :year')
+            ->setParameters([
+                'active' => true,
+                'year' => $year,
+            ])
+            ->select('balloon.isActive',
+                    'balloon.name',
+                    'SUM(decoration_item.quantity) AS quantity',
+                    'decoration_item.price')
+            ->groupBy('balloon.isActive', 'balloon.name', 'decoration_item.price')
+            ->orderBy('balloon.name', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
 }
