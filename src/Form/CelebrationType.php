@@ -12,6 +12,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -63,12 +64,32 @@ class CelebrationType extends AbstractType
             ])
 //            ->addEventSubscriber(new LocationChangeInCelebrationsFormListener())
         ;
+
+        if ($options['useNewFieldsInEditView']) {
+
+            $celebration = $builder->getData();
+
+            $builder
+                ->add('decorationsExpense', NumberType::class, [
+                    'attr' => ['readonly' => 'readonly'],
+                    'mapped' => false,
+                    'scale' => 2,
+                    'data' => $celebration->getTotalPrice(),
+                ])
+                ->add('profit', NumberType::class, [
+                    'attr' => ['readonly' => 'readonly'],
+                    'mapped' => false,
+                    'scale' => 2,
+                    'data' => $celebration->getProfit(),
+                ]);
+        }
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
             'data_class' => Celebration::class,
+            'useNewFieldsInEditView' => false,
         ]);
     }
 }

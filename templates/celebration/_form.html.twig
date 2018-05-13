@@ -17,7 +17,10 @@
     {{ form_row(form.revenue) }}
     {{ form_row(form.workerExpense) }}
     {{ form_row(form.transportExpense) }}
+    {#{{ form_row(form.decorationsExpense) }}#}
+    {#{{ form_row(form.profit) }}#}
     {{ form_row(form.isActive) }}
+    {{ form_rest(form) }}
     <div class="form-group row">
         <div class="col-sm-2"></div>
         <div class="col-sm-8">
@@ -28,4 +31,5 @@
             <a href="{{ path('celebration_index') }}" class="btn btn-outline-info">back to list</a>
         </div>
     </div>
+    {#{{ form_row(form._token) }}#}
 {{ form_end(form) }}

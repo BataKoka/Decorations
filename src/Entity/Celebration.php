@@ -71,12 +71,14 @@ class Celebration
 
     /**
      * @Assert\Type("integer")
+     * @Assert\GreaterThanOrEqual(0)
      * @ORM\Column(type="integer", options={"unsigned":true, "default":0})
      */
     private $workerExpense = 0;
 
     /**
      * @Assert\Type("integer")
+     * @Assert\GreaterThanOrEqual(0)
      * @ORM\Column(type="integer", options={"unsigned":true, "default":0})
      */
     private $transportExpense = 0;
@@ -275,5 +277,37 @@ class Celebration
         $this->decorations->removeElement($decoration);
         // set the owning side to null
         $decoration->setCelebration(null);
+    }
+
+    public function getTotalPrice()
+    {
+        // get all active decorations
+        $activeDecorations = $this->getDecorations()->filter(function ($decoration) {
+            /** @var Decoration $decoration */
+            return $decoration->getIsActive();
+        });
+
+        $total = 0;
+        foreach ($activeDecorations as $activeDecoration) {
+            /** @var Decoration $activeDecoration */
+            $total += $activeDecoration->getTotalPrice();
+        }
+        return $total;
+    }
+
+    public function getProfit()
+    {
+        $locationPercentage = $this->getLocationPercentage();
+        $revenue = $this->getRevenue();
+        $workerExpense = $this->getWorkerExpense();
+        $transportExpense = $this->getTransportExpense();
+        $decorationsExpense = $this->getTotalPrice();
+
+        $moneyForLocation = ($locationPercentage / 100) * $revenue;
+        $adjustedRevenue = $revenue - $moneyForLocation;
+        $allExpenses = $workerExpense + $transportExpense + $decorationsExpense;
+        $profit = $adjustedRevenue - $allExpenses;
+
+        return number_format((float) $profit, 2, '.', '');
     }
 }

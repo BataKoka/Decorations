@@ -70,7 +70,7 @@ class CelebrationController extends Controller
      */
     public function edit(Request $request, Celebration $celebration): Response
     {
-        $form = $this->createForm(CelebrationType::class, $celebration);
+        $form = $this->createForm(CelebrationType::class, $celebration, ['useNewFieldsInEditView' => true]);
         $form->handleRequest($request);
 
         $decorations = $this->getDoctrine()

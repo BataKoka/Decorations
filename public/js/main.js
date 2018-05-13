@@ -51,7 +51,7 @@ $(document).ready(function () {
         $('#decoration_item_total').val(total);
     });
 
-    // Price i Total polja u Form/DecorationItemType.php, dodatak za EDIT page
+    // Price i Total polja u Form/DecorationItemType.php, dodatak za EDIT page, da se prvi put vide
     var balloonPrice = $('#decoration_item_price').val();
     var quantity = $('#decoration_item_quantity').val();
     var total = Number(balloonPrice * quantity).toFixed(2);
@@ -69,7 +69,24 @@ $(document).ready(function () {
         "pagingType": "full_numbers"
     });
 
+    // DataTables for Home page
     $('#dashboard').DataTable({
-        "order": [[ 1, 'asc' ]],
+        "order": [[ 1, 'asc' ]]
+    });
+
+    // Decoration expense i Profit Polja u Form/CelebrationType.php, SAMO za EDIT
+    $('#celebration_location, #celebration_revenue, #celebration_workerExpense, #celebration_transportExpense').change(function () {
+        var locationPercentage = $('#celebration_locationPercentage').val();
+        var revenue = $('#celebration_revenue').val();
+        var workerExpense = $('#celebration_workerExpense').val();
+        var transportExpense = $('#celebration_transportExpense').val();
+        var decorationsExpense = $('#celebration_decorationsExpense').val();
+
+        var moneyForLocation = (locationPercentage / 100) * revenue;
+        var adjustedRevenue = revenue - moneyForLocation;
+        var allExpenses = Number(workerExpense) + Number(transportExpense) + Number(decorationsExpense);
+        var profit = Number(adjustedRevenue - allExpenses).toFixed(2);
+
+        $('#celebration_profit').val(profit);
     });
 });
